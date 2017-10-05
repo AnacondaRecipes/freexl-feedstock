@@ -1,4 +1,4 @@
-{% set version = "1.0.2" %}
+{% set version = "1.0.4" %}
 
 package:
   name: freexl
@@ -6,32 +6,22 @@ package:
 
 source:
   url: http://www.gaia-gis.it/gaia-sins/freexl-{{ version }}.tar.gz
-  sha256: b39a4814a0f53f5e09a9192c41e3e51bd658843f770399023a963eb064f6409d
+  sha256: 500ff1010bbceee26d4ce1b991515736bd8c0ae6894f8c38468c05c224fe7c25
   patches:
     - makefile.vc.patch  # [win]
     - nmake.opt.patch  # [win]
     - freexl.c.patch  # [win]
 
 build:
-  number: 2
-  skip: True  # [win and py36]
+  number: 3
   features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and (py35 or py36)]
+    - vc{{ vc }}  # [win]
 
 requirements:
   build:
-    - python  # [win]
+    - {{ compiler('c') }}
+  host:
     - libiconv
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and (py35 or py36)]
-  run:
-    - libiconv
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and (py35 or py36)]
 
 test:
   commands:
@@ -48,3 +38,4 @@ about:
 extra:
   recipe-maintainers:
     - ocefpaf
+    - msarahan
