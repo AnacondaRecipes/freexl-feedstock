@@ -13,9 +13,11 @@ source:
     - freexl.c.patch  # [win]
 
 build:
-  number: 3
+  number: 4
   features:
     - vc{{ vc }}  # [win]
+  run_exports:
+    - {{ pin_subpackage('freexl') }}
 
 requirements:
   build:
