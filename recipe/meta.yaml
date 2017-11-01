@@ -21,7 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - libiconv
+    - libiconv                # [not linux]
 
 test:
   commands:
