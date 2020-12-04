@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('c') }}
   host:
     - libiconv  # [win]
-    - make
+    - make      # [not win]
 
 test:
   commands:
