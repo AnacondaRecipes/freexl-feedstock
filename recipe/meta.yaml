@@ -1,4 +1,4 @@
-{% set version = "1.0.6" %}
+{% set version = "2.0.0rc0" %}
 
 package:
   name: freexl
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://www.gaia-gis.it/gaia-sins/freexl-{{ version }}.tar.gz
-  sha256: 3de8b57a3d130cb2881ea52d3aa9ce1feedb1b57b7daa4eb37f751404f90fc22
+  sha256: 80c3fe2ae1062abf56456f52518bd670f9ec3917b7f85e152b347ac6b6faf880
   patches:
     - patches/makefile.vc.patch
     - patches/nmake.opt.patch
