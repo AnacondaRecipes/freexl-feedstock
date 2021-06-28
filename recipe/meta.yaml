@@ -35,6 +35,7 @@ test:
 about:
   home: https://www.gaia-gis.it/fossil/freexl/index
   license: MPL-1.1
+  license_family: MPL
   license_file: COPYING
   summary: Extract valid data from within an Excel
 
