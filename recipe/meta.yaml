@@ -19,9 +19,9 @@ build:
 
 requirements:
   build:
-    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - make      # [not win]
+    - libtool   # [not win]
   host:
     - libiconv  # [win]
     - make      # [not win]
@@ -35,7 +35,7 @@ test:
 about:
   home: https://www.gaia-gis.it/fossil/freexl/index
   license: MPL-1.1
-  license_family: MPL
+  license_family: OTHER
   license_file: COPYING
   summary: Extract valid data from within an Excel
 
