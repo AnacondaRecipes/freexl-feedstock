@@ -20,7 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - make
+    - make # [not win]
     - libtool   # [not win]
     - patch       # [not win]
     - m2-patch    # [win]
