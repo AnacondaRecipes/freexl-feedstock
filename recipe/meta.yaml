@@ -13,7 +13,7 @@ source:
     - patches/aarch64.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('freexl') }}
 
@@ -23,7 +23,6 @@ requirements:
     - make # [not win]
     - libtool   # [not win]
     - patch       # [not win]
-    - m2-patch    # [win]
   host:
     - libiconv 1.16
     - minizip 4.0.3
