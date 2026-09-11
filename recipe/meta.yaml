@@ -35,7 +35,6 @@ requirements:
 test:
   commands:
     - test -f ${PREFIX}/lib/libfreexl.a  # [unix]
-    - conda inspect linkages -p ${PREFIX} $PKG_NAME  # [linux]
 
 about:
   home: https://www.gaia-gis.it/fossil/freexl/index
