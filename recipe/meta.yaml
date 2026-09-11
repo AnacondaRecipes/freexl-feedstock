@@ -17,10 +17,10 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - make # [not win]
     - libtool   # [not win]
-    - patch       # [not win]
   host:
     - libiconv 1.16
     - minizip 4.0.3
