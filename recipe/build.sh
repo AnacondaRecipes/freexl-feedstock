@@ -1,16 +1,11 @@
 #!/bin/bash
 # Get an updated config.sub and config.guess
-cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* .
+cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
-export CFLAGS="$CFLAGS -I$PREFIX/include -L$PREFIX/lib"
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib -Wl,-rpath,${PREFIX}/lib"
+./configure --prefix=${PREFIX} --disable-dependency-tracking
 
-if [[ $(uname -m) = "aarch64" ]]; then
-  ./configure --prefix=$PREFIX --host=aarch64-linux-gnu --build=aarch64-linux-gnu
-else
-  ./configure --prefix=$PREFIX --host=$HOST --build=$BUILD
+make -j${CPU_COUNT}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
+  make check -j${CPU_COUNT}
 fi
-
-make
-make install
-make check
+make install -j${CPU_COUNT}

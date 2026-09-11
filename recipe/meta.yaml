@@ -13,30 +13,26 @@ source:
     - patches/aarch64.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('freexl') }}
 
 requirements:
   build:
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - make # [not win]
-    - libtool   # [not win]
-    - patch       # [not win]
-    - m2-patch    # [win]
+    - {{ stdlib('c') }}
+    - make  # [not win]
   host:
-    - libiconv 1.16
-    - minizip 4.0.3
-    - expat {{ expat }}
-  run:
-    - libiconv  # constraint through run_exports
-    - minizip   # constraint through run_exports
-    - expat     # constraint through run_exports
+    - expat
+    - libiconv
+    - minizip
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libfreexl.a  # [unix]
-    - conda inspect linkages -p ${PREFIX} $PKG_NAME  # [linux]
+    - test -f ${PREFIX}/lib/libfreexl.a  # [not win]
+    - if not exist %LIBRARY_BIN%\freexl.dll exit 1  # [win]
+    - if not exist %LIBRARY_LIB%\freexl_i.lib exit 1  # [win]
 
 about:
   home: https://www.gaia-gis.it/fossil/freexl/index
