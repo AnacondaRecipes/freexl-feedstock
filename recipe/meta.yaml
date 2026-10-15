@@ -33,6 +33,8 @@ requirements:
     - expat     # constraint through run_exports
 
 test:
+  requires:
+    - conda-build  # [linux]
   commands:
     - test -f ${PREFIX}/lib/libfreexl.a  # [unix]
     - conda-inspect linkages -p ${PREFIX} $PKG_NAME  # [linux]
