@@ -24,8 +24,8 @@ requirements:
     - make # [not win]
     - libtool   # [not win]
   host:
-    - libiconv 1.16
-    - minizip 4
+    - libiconv {{ libiconv }}
+    - minizip {{ minizip }}
     - expat {{ expat }}
   run:
     - libiconv  # constraint through run_exports
